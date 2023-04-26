@@ -27,6 +27,8 @@
   debug:
     msg: '{{ check2.json }}'
 
+# TODO: Craft block to pull manifest using access.redhat.com API
+
 - name: load license block
   block:
     - name: check for base64 variable first

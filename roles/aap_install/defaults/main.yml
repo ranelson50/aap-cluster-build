@@ -4,4 +4,4 @@ aap_dir: "/home/{{ username }}/aap_install"
 output_dir: "{{ playbook_dir }}/{{ ec2_name_prefix }}"
 
 # Controller install command
-controller_install_command: "./setup.sh -e gpgcheck=0"
+controller_install_command: "./setup.sh -- -b --become-user root"

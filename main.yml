@@ -10,11 +10,10 @@
         name: ./roles/aap_download
 
 - name: copy the tarball to ther automation controller and install aap
-  hosts: "{{ctrl_ip}}"
+  hosts: All
   vars_files:
     - vars/main.yml
-  connection: local
-  become: false
+  become: true
   gather_facts: true
   tasks:
     - name: run the install role
