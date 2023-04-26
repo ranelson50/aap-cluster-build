@@ -1,0 +1,21 @@
+ctrl_ip:
+admin_password:
+automation_controllers:
+execution_nodes:
+automation_hubs:
+redhat_username:
+redhat_password:
+ee_registry_name: "registry.redhat.io"
+ee_default_image: "{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest"
+ee_images: 
+   - "{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest"
+   - "{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest"
+   - "{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest"
+ctrl_pg_dns:
+ctrl_db_name:
+ctrl_db_username:
+ctrl_db_password:
+pah_pg_dns:
+pah_db_name:
+pah_db_username:
+pah_db_password:

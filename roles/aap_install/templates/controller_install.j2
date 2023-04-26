@@ -1,0 +1,50 @@
+[automationcontroller]
+{{ ctrl_ip }} ansible_connection=local
+{% for ctrl in automation_controllers %}
+{{ ctrl }} node_type=hybrid ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/aap_clstr.pem
+{% endfor %}
+
+[automationcontroller:vars]
+peers=execution_nodes
+
+[execution_nodes]
+{ % for exec in execution_nodes % }
+{{ exec }} node_type=execution ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/aap_clstr.pem
+{% endfor %}
+
+[automationhub]
+{ % for pah in automation_hubs % }
+{{ pah }} ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/aap_clstr.pem
+{% endfor %}
+
+[database]
+
+[servicescatalog_workers]
+
+[all:vars]
+admin_password='{{ admin_password }}'
+automationcontroller_client_max_body_size='20M'
+
+pg_host='{{ ctrl_pg_dns }}'
+pg_port='5432'
+
+pg_database='{{ ctrl_db_name }}'
+pg_username='{{ db_username }}'
+pg_password='{{ db_password }}'
+pg_sslmode='prefer'  # set to 'verify-full' for client-side enforced SSL
+
+registry_url='{{ ee_registry_name }}'
+registry_username='{{ redhat_username }}'
+registry_password='{{ redhat_password }}'
+
+receptor_listener_port=27199
+
+automationhub_admin_password='{{ pah_admin_password }}'
+
+automationhub_pg_host='{{ pah_db_dns }}'
+automationhub_pg_port='5432'
+
+automationhub_pg_database='{{ pah_db_name }}'
+automationhub_pg_username='{{ pah_db_username }}'
+automationhub_pg_password='{{ pah_db_password }}'
+automationhub_pg_sslmode='prefer'

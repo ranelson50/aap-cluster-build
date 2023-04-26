@@ -1,0 +1,25 @@
+---
+- name: aap setup for control node
+  include_tasks: aap_setup.yml
+  tags:
+    - aap_setup
+
+- name: check to see if automation controller is already up and running
+  uri:
+    url: https://localhost/api/v2/ping/
+    method: GET
+    user: admin
+    password: "{{ admin_password }}"
+    validate_certs: false
+    force_basic_auth: true
+  register: check_controller
+  ignore_errors: true
+  failed_when: false
+
+- name: install controller if not installed
+  include_tasks: "controller.yml"
+  when:
+    - check_controller.status != 200
+
+- name: Install packages
+  include_tasks: package_dependencies.yml
