@@ -1,4 +1,7 @@
 ---
+- name: Install packages
+  include_tasks: package_dependencies.yml
+  
 - name: aap setup for control node
   include_tasks: aap_setup.yml
   tags:
@@ -20,6 +23,3 @@
   include_tasks: "controller.yml"
   when:
     - check_controller.status != 200
-
-- name: Install packages
-  include_tasks: package_dependencies.yml
