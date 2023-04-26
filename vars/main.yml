@@ -1,4 +1,5 @@
-ctrl_ip:
+offline_token:
+ctrl_node_ip:
 admin_password:
 automation_controllers:
 execution_nodes:

@@ -63,7 +63,7 @@
   until: license_controller is not failed
   retries: 5
 
-## Execution environments
+### Execution environments
 
 - name: Login to redhat registry
   containers.podman.podman_login:
