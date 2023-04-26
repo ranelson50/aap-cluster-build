@@ -5,7 +5,7 @@
     suffix: "aapbundle"
   register: tempdir
 
-- name: copy AAP tar.gz
+- name: Copy AAP tar.gz
   copy:
     src: "{{ aap_archive | default(playbook_dir + '/aap.tar.gz') }}"
     dest: "{{ tempdir.path }}/aap.tar.gz"

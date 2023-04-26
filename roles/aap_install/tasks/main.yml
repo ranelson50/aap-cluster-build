@@ -2,12 +2,12 @@
 - name: Install packages
   include_tasks: package_dependencies.yml
   
-- name: aap setup for control node
+- name: AAP setup for control node
   include_tasks: aap_setup.yml
   tags:
     - aap_setup
 
-- name: check to see if automation controller is already up and running
+- name: Check to see if automation controller is already up and running
   uri:
     url: https://localhost/api/v2/ping/
     method: GET
@@ -19,7 +19,7 @@
   ignore_errors: true
   failed_when: false
 
-- name: install controller if not installed
+- name: Install controller if not installed
   include_tasks: "controller.yml"
   when:
     - check_controller.status != 200

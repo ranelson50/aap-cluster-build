@@ -30,7 +30,7 @@
   retries: 4
   delay: 5
 
-- name: install community collection
+- name: Install community collection
   shell: "ansible-galaxy collection install {{ item }} --force-with-deps "
   register: controlnode
   loop:
