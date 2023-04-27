@@ -1,1 +1,0 @@
-All of this was originally forked from https://github.com/ansible/workshops
