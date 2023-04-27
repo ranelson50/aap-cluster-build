@@ -1,7 +1,7 @@
 ---
 username: "ec2-user"
 aap_dir: "/home/{{ username }}/aap_install"
-output_dir: "{{ playbook_dir }}/{{ ec2_name_prefix }}"
+ee_registry_name: "registry.redhat.io"
 
 # Controller install command
 controller_install_command: "./setup.sh -- -b --become-user root"

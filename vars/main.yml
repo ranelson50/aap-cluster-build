@@ -1,22 +1,62 @@
+# Red Hat API Token
 offline_token:
+
+# Control node IP address 
 ctrl_node_ip:
+
+# The common username for all hosts in the cluster
+username:
+
+# Initial admin password for automation controller and private automation hub UI
 admin_password:
+
+# IP list of automation controllers (NOT INCLUDING CONTROL NODE)
 automation_controllers:
+
+# IP list of execution nodes
 execution_nodes:
+
+# IP list of automation hubs
 automation_hubs:
+
+# Red Hat username to log into registry and pull containers
 redhat_username:
+
+# Red Hat password to log into registry and pull containers
 redhat_password:
+
+# Container registry name
 ee_registry_name: "registry.redhat.io"
+
+# The default execution environment image
 ee_default_image: "{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest"
+
+# The list of execution environment images to be pulled
 ee_images: 
    - "{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest"
    - "{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest"
    - "{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest"
+
+# The automation controller DB hostname or IP address  
 ctrl_pg_dns:
+
+# The automation controller DB instance name
 ctrl_db_name:
+
+# The automation controller DB instance username
 ctrl_db_username:
+
+# The automation controller DB instance password
 ctrl_db_password:
+
+# The automation hub DB hostname or IP address
 pah_pg_dns:
+
+# The automation hub DB instance name
 pah_db_name:
+
+# The automation hub DB instance username
 pah_db_username:
+
+# The automation hub DB instance password
 pah_db_password:

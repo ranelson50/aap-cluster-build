@@ -1,7 +1,7 @@
 [automationcontroller]
 {{ ctrl_node_ip }} ansible_connection=local
 {% for ctrl in automation_controllers %}
-{{ ctrl }} node_type=hybrid ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/aap_clstr.pem
+{{ ctrl }} node_type=hybrid ansible_user={{ username }} ansible_ssh_private_key_file=/home/{{ username }}/aap_clstr.pem
 {% endfor %}
 
 [automationcontroller:vars]
@@ -9,12 +9,12 @@ peers=execution_nodes
 
 [execution_nodes]
 {% for exec in execution_nodes %}
-{{ exec }} node_type=execution ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/aap_clstr.pem
+{{ exec }} node_type=execution ansible_user={{ username }} ansible_ssh_private_key_file=/home/{{ username }}/aap_clstr.pem
 {% endfor %}
 
 [automationhub]
 {% for pah in automation_hubs %}
-{{ pah }} ansible_user=ec2-user ansible_ssh_private_key_file=/home/ec2-user/aap_clstr.pem
+{{ pah }} ansible_user={{ username }} ansible_ssh_private_key_file=/home/{{ username }}/aap_clstr.pem
 {% endfor %}
 
 [database]
@@ -39,7 +39,7 @@ registry_password='{{ redhat_password }}'
 
 receptor_listener_port=27199
 
-automationhub_admin_password='{{ pah_admin_password }}'
+automationhub_admin_password='{{ admin_password }}'
 
 automationhub_pg_host='{{ pah_pg_dns }}'
 automationhub_pg_port='5432'
