@@ -6,10 +6,7 @@ aap_download_password -Paswword if downloading the tarball from a URL
 offline_token - This is the API token that you can get from logging in at https://access.redhat.com/management/api
 
 ### AAP install role vars
-aap_archive -
-aap_dir -
 admin_password -
-pah_admin_password -
 automation_controllers - List of the automation controller IPs
 execution_nodes - List of the execution node IPs
 automation_hubs - List of the automation hub IPs
@@ -28,7 +25,7 @@ ctrl_pg_dns - The DNS name for the automation controller DB
 ctrl_db_name -
 ctrl_db_username -
 ctrl_db_password -
-ctrl_pg_dns - The DNS name for the private automation hub DB
+pah_pg_dns - The DNS name for the private automation hub DB
 pah_db_name -
 pah_db_username -
 pah_db_password -

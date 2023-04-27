@@ -1,21 +1,23 @@
 ---
-- name: download the app bundle
+- name: Download the app bundle
   hosts: localhost
+  vars_files:
+    - vars/main.yml
   connection: local
   become: false
   gather_facts: true
   tasks:
-    - name: download the aap bundle
+    - name: Download the AAP bundle
       ansible.builtin.include_role:
         name: ./roles/aap_download
 
-- name: copy the tarball to ther automation controller and install aap
+- name: Copy the tarball to ther automation controller and install AAP
   hosts: All
   vars_files:
     - vars/main.yml
   become: true
   gather_facts: true
   tasks:
-    - name: run the install role
+    - name: Run the install role
       ansible.builtin.include_role:
         name: ./roles/aap_install

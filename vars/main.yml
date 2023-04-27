@@ -1,6 +1,9 @@
 # Red Hat API Token
 offline_token:
 
+# The SHA256 checksum of the desired AAP bundle download
+provided_sha_value:
+
 # Control node IP address 
 ctrl_node_ip:
 
