@@ -10,6 +10,9 @@ ctrl_node_ip:
 # The common username for all hosts in the cluster
 username:
 
+# The common SSH key file name, including the file extension
+key_file:
+
 # Initial admin password for automation controller and private automation hub UI
 admin_password:
 
