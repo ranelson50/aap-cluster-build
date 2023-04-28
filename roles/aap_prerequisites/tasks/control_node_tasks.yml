@@ -1,0 +1,25 @@
+---
+- name: Accept SSH fingerprint for other nodes in cluster
+  block:
+    - name: SSH to each host in the cluster
+      delegate_to: control_node
+      ssh:
+        host: "{{ item }}"
+        ssh_args: "-o StrictHostKeyChecking accept-new"
+        remote_user: "{{ username }}"
+        private_key_file: "{{ key_file }}"
+    - name: Disconnect the SSH connection
+      delegate_to: control_node
+      shell:
+        cmd: "logout"
+  loop: 
+    - "{{ automation_controllers }}"
+    - "{{ automation_hubs }}"
+    - "{{ execution_nodes }}"
+
+- name: Create '/var/log/tower' directory on control node for setup logs
+  delegate_to: control_node
+  become: true
+  file:
+    path: "/var/log/tower"
+    state: directory

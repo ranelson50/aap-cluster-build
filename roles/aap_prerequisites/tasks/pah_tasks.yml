@@ -1,0 +1,5 @@
+---
+- name: Install nfs-utils
+  delegate_to: automation_hubs
+  dnf:
+    name: "nfs-utils"
