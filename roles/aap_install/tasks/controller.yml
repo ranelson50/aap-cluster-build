@@ -63,7 +63,7 @@
   until: license_controller is not failed
   retries: 5
 
-### Execution environments
+# Execution environments - Mot functional at this point
 
 # - name: Login to redhat registry
   # containers.podman.podman_login:
@@ -71,14 +71,14 @@
     # password: '{{ redhat_password }}'
     # registry: '{{ ee_registry_name }}'
   # become_user: "awx"
-# 
+
 # - name: Mod containers.conf to utilize max of 10 parallel threads
   # become_user: "awx"
   # lineinfile:
     # path: /var/lib/awx/.config/containers/containers.conf
     # line: 'image_parallel_copies=10'
     # insertafter: EOF
-# 
+
 # - name: Pull supported images
   # become_user: "awx"
   # containers.podman.podman_image:
@@ -88,7 +88,7 @@
   # until: podman_pull_supported is not failed
   # retries: 5
   # delay: 15
-# 
+
 # - name: Create container registry credential
   # awx.awx.credential:
     # name: '{{ ee_registry_name }} credential'
@@ -102,7 +102,7 @@
       # username: "{{ redhat_username }}"
       # password: "{{ redhat_password }}"
       # host: "{{ ee_registry_name }}"
-# 
+
 # - name: Update default EE to use credential
   # awx.awx.execution_environment:
     # name: "Default execution environment"
@@ -117,5 +117,3 @@
   # until: ee_check is not failed
   # retries: 4
   # delay: 5
-
-### end of execution environments
