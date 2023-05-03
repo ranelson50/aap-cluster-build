@@ -1,0 +1,5 @@
+---
+- name: Disconnect the SSH connection
+  delegate_to: control_node
+  shell:
+    cmd: "logout"
