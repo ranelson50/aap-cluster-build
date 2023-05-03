@@ -1,2 +1,8 @@
 ---
+- name: Perform prerequisite tasks on the control node
+  delegate_to: control_node
+  include_tasks: control_node_tasks.yml
 
+- name: Perform prerequisite tasks on the automation hubs
+  delegate_to: automation_hubs
+  include_tasks: pah_tasks.yml

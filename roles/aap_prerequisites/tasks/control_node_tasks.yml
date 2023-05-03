@@ -1,17 +1,12 @@
 ---
 - name: Accept SSH fingerprint for other nodes in cluster
-  block:
-    - name: SSH to each host in the cluster
-      delegate_to: control_node
-      ssh:
-        host: "{{ item }}"
-        ssh_args: "-o StrictHostKeyChecking accept-new"
-        remote_user: "{{ username }}"
-        private_key_file: "{{ key_file }}"
-    - name: Disconnect the SSH connection
-      delegate_to: control_node
-      shell:
-        cmd: "logout"
+  delegate_to: control_node
+  include_tasks: logout.yml
+  ssh:
+    host: "{{ item }}"
+    ssh_args: "-o StrictHostKeyChecking accept-new"
+    remote_user: "{{ username }}"
+    private_key_file: "{{ key_file }}"
   loop: 
     - "{{ automation_controllers }}"
     - "{{ automation_hubs }}"
