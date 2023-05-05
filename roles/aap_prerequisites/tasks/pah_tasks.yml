@@ -1,0 +1,19 @@
+---
+- name: Install nfs-utils
+  delegate_to: automation_hubs
+  dnf:
+    name: "nfs-utils"
+
+- name: Create the directory to mount the NFS share
+  delegate_to: automation_hubs
+  file:
+    path: "/var/lib/pulp"
+    state: directory
+
+- name: Mount the NFS share to the created directory
+  delegate_to: automation_hubs
+  ansible.posix.mount:
+    src: "{{ nfs_mnt_src }}"
+    path: "/var/lib/pulp"
+    fstype: nfs
+    state: mounted

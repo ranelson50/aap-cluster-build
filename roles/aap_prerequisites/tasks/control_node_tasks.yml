@@ -1,0 +1,20 @@
+---
+- name: SSH to all other nodes to ensure that the SSH fingerprint has been accepted
+  delegate_to: control_node
+  include_tasks: logout.yml
+  ssh:
+    host: "{{ item }}"
+    ssh_args: "-o StrictHostKeyChecking accept-new"
+    remote_user: "{{ username }}"
+    private_key_file: "{{ key_file }}"
+  loop: 
+    - "{{ automation_controllers }}"
+    - "{{ automation_hubs }}"
+    - "{{ execution_nodes }}"
+
+- name: Create '/var/log/tower' directory on control node for setup logs
+  delegate_to: control_node
+  become: true
+  file:
+    path: "/var/log/tower"
+    state: directory
