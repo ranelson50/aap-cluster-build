@@ -1,5 +1,5 @@
 ---
-- name: Accept SSH fingerprint for other nodes in cluster
+- name: SSH to all other nodes to ensure that the SSH fingerprint has been accepted
   delegate_to: control_node
   include_tasks: logout.yml
   ssh:
