@@ -66,3 +66,6 @@ pah_db_username:
 
 # The automation hub DB instance password
 pah_db_password:
+
+# The NFS mount path for the shared filesystem on the automation hubs
+nfs_mnt_src:
